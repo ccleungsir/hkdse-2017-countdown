@@ -259,6 +259,11 @@ body::before {
   border-color: var(--ink);
 }
 
+.filter-en {
+  font-size: 0.78em;
+  opacity: 0.78;
+}
+
 .exam-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
