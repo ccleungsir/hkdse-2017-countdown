@@ -49,4 +49,14 @@ python3 tests/verify.py
 
 ## GitHub Pages
 
-`main` 分支推送後，`.github/workflows/pages.yml` 會部署靜態檔。網站路徑為專案頁：`/hkdse-2017-countdown/`。
+`main` 已包含靜態站與 `.github/workflows/pages.yml`（GitHub Actions 部署）。
+
+此雲端代理的 token **沒有**建立 Pages 站台的管理員權限（`has_pages: false`，API 回 403）。請用擁有者帳號做一次設定：
+
+1. 打開 [Pages 設定](https://github.com/ccleungsir/hkdse-2017-countdown/settings/pages)
+2. Build and deployment → Source 選 **GitHub Actions**
+3. 到 [Actions](https://github.com/ccleungsir/hkdse-2017-countdown/actions/workflows/pages.yml) 重跑 **Deploy GitHub Pages**，或再 push `main`
+
+完成後公開網址為 https://ccleungsir.github.io/hkdse-2017-countdown/
+
+The workflow is ready on `main`. Enabling Pages the first time requires repo admin (Settings → Pages → Source: GitHub Actions), then re-run the deploy workflow.
