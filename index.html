@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="2017 年香港中學文憑考試各科倒數，準確至秒。來源：官方考試時間表附件一。"
+    />
+    <title>2017 HKDSE 各科倒數｜香港中學文憑考試時間表</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#exam-grid">跳至科目倒數 / Skip to timers</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">17</div>
+          <div>
+            <h1>2017 香港中學文憑考試倒數</h1>
+            <p>HKDSE Examination Countdown · 香港時間 (HKT)</p>
+          </div>
+        </div>
+        <div class="clock-box">
+          <span class="clock-label">現在香港時間 / Now HKT</span>
+          <time id="hkt-clock" class="clock" datetime="">載入中…</time>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <span class="hero-kicker">歷史時間表 · 2017 年原日期，不改寫為未來年份</span>
+        <h2>每一科、每一場，準確到秒。</h2>
+        <p class="hero-lead">
+          資料取自官方《2017 年香港中學文憑考試時間表（附件一）》。附件一只標示上午／下午，頁面按慣例把上午場視為
+          <strong>08:30:00</strong>、下午場視為 <strong>13:30:00</strong>（香港時間）。所有目標時刻以帶
+          <code>+08:00</code> 的絕對時間編碼。2017 年試期相對今日已過去，各科會顯示
+          <strong>已完結 / Finished</strong>，並繼續以秒更新開考後經過的時間。
+        </p>
+        <div class="stats" aria-live="polite">
+          <div class="stat">
+            <strong id="stat-total">0</strong>
+            <span>場次 Sessions</span>
+          </div>
+          <div class="stat">
+            <strong id="stat-finished">0</strong>
+            <span>已完結 Finished</span>
+          </div>
+          <div class="stat">
+            <strong id="stat-visible">0</strong>
+            <span>目前顯示 Visible</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="篩選科目">
+        <label class="search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" />
+            <path d="M20 20L16.5 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <input
+            id="subject-search"
+            type="search"
+            placeholder="搜尋科目，例如 化學、English、ICT…"
+            autocomplete="off"
+          />
+        </label>
+        <div id="filters" class="filters" role="group" aria-label="科目類別"></div>
+      </section>
+
+      <section id="exam-grid" class="exam-grid" aria-live="off"></section>
+      <p id="empty-state" class="empty" hidden>沒有符合的科目。 / No matching subjects.</p>
+
+      <section class="notes">
+        <h2>時間假設 / Time assumptions</h2>
+        <ul>
+          <li>來源：2017 HKDSE Annex 1。日期與科目按原文編排，不改為 2027 或其他年份。</li>
+          <li>上午場 08:30:00、下午場 13:30:00（HKT）。卷一／卷二同日但上午下午不同者，分開兩列倒數。</li>
+          <li>中國語文卷三（4 月 6 日）與英國語文卷三（4 月 8 日）附件一列於上午，預設 08:30。</li>
+          <li>2017 年 5 月 4 日以中文星期為準：星期四（附件一英文 Wed 為誤植）。</li>
+          <li>設計與應用科技、音樂、體育按註 2 保留 4 月 13 日與 4 月 28 日兩個檔期。</li>
+          <li>5 月 5 至 6 日為後備日。倒數每秒以 <code>Date.now()</code> 重算，避免計時漂移。</li>
+          <li>Source: 2017 HKDSE Annex 1. AM = 08:30:00, PM = 13:30:00, Asia/Hong_Kong.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>公開靜態頁 · GitHub Pages · 香港時間 (HKT)</p>
+      <p>
+        <a href="https://github.com/ccleungsir/hkdse-2017-countdown">原始碼 / Source</a>
+      </p>
+    </footer>
+
+    <script src="./exams.js"></script>
+    <script src="./countdown.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
