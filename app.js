@@ -106,7 +106,7 @@
       .map((key) => {
         const label = CATEGORY_LABEL[key];
         const pressed = state.category === key;
-        return `<button type="button" class="filter" data-category="${key}" aria-pressed="${pressed}">${label.zh} <small>${label.en}</small></button>`;
+        return `<button type="button" class="filter" data-category="${key}" aria-pressed="${pressed}">${label.zh}<span class="filter-en"> · ${label.en}</span></button>`;
       })
       .join("");
   }
@@ -168,6 +168,7 @@
 
   function paint(nowMs) {
     els.clock.textContent = formatHktClock(nowMs);
+    els.clock.setAttribute("datetime", new Date(nowMs).toISOString());
     let finished = 0;
     for (const session of sessions) {
       if (nowMs >= session.targetMs) finished += 1;
@@ -196,7 +197,9 @@
   }
 
   let lastSecond = -1;
-  function loop(nowMs) {
+  function loop() {
+    // rAF supplies a relative DOMHighResTimeStamp; always recompute from Date.now().
+    const nowMs = Date.now();
     const second = Math.floor(nowMs / 1000);
     if (second !== lastSecond) {
       lastSecond = second;

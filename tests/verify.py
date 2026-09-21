@@ -161,6 +161,12 @@ console.log("countdown-ok");
     if countdown.returncode != 0:
         raise SystemExit(f"countdown.js failed:\n{countdown.stderr}\n{countdown.stdout}")
 
+    app_js = (ROOT / "app.js").read_text(encoding="utf-8")
+    assert "Date.now()" in app_js
+    assert "DOMHighResTimeStamp" in app_js or "always recompute from Date.now()" in app_js
+    assert "requestAnimationFrame(loop)" in app_js
+    assert "function loop(nowMs)" not in app_js, "rAF callback must not treat its timestamp as wall-clock time"
+
     print(f"OK: {len(sessions)} sessions, dates 2017-03-31 to 2017-05-06, +08:00 timestamps")
 
 
